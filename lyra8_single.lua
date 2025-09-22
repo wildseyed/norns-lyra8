@@ -269,19 +269,27 @@ function init()
     print("Setting up parameter callbacks...")
     -- Simplified - just basic functionality for now
     
-    -- Start UI refresh timer
+    -- Start UI refresh timer (with error protection)
     print("Starting UI refresh timer...")
-    app.refresh_timer = metro.init()
-    app.refresh_timer.time = 1/30  -- 30fps
-    app.refresh_timer.count = -1
-    app.refresh_timer.event = function()
-        app.blink_timer = (app.blink_timer + 1) % 30
-        if app.screen_dirty then
-            redraw()
-            app.screen_dirty = false
+    local timer_success, timer_error = pcall(function()
+        app.refresh_timer = metro.init()
+        app.refresh_timer.time = 1/30  -- 30fps
+        app.refresh_timer.count = -1
+        app.refresh_timer.event = function()
+            app.blink_timer = (app.blink_timer + 1) % 30
+            if app.screen_dirty then
+                redraw()
+                app.screen_dirty = false
+            end
         end
+        app.refresh_timer:start()
+    end)
+    
+    if not timer_success then
+        print("Timer setup failed:", timer_error)
+        -- Fallback: just mark screen dirty
+        app.screen_dirty = true
     end
-    app.refresh_timer:start()
     
     print("LYRA-8 ready!")
 end
