@@ -39,7 +39,17 @@ The LYRA-8 is an 8-voice FM synthesizer known for its organic, chaotic, and rich
 
 ## Quick Start
 
-### Controls
+### For Testing (Recommended)
+
+1. Upload **only** `lyra8_single.lua` to your Norns `/dust/code/norns-lyra8/` directory
+2. Rename it to `lyra8.lua` or select "lyra8_single" from the script menu
+3. This eliminates module loading issues during initial testing
+
+### For Development
+
+1. Upload the entire `norns-lyra8` folder structure to `/dust/code/`
+2. Ensure all files in `lib/` are properly uploaded
+3. Use the modular `lyra8.lua` version
 
 - **E1**: Navigate hierarchy levels (Global → Quads → Pairs → Voices)
 - **E2**: Select parameter within current level
@@ -244,8 +254,13 @@ This project is in **active development**. Current status:
 - ❌ **File Structure**: Fixed subdirectory issue - moved to flat `lib/` structure
 
 **Second Run (2024-09-21)**:
-- ⏳ **Module Loading**: Testing simplified `lib/module` paths
-- ⏳ **Next**: Verify modules load with flat structure
+- ✅ **Module Loading**: UI module loads correctly
+- ❌ **File Upload**: engine_interface.lua and parameters.lua not found on device
+- ✅ **Workaround**: Created single-file version (`lyra8_single.lua`)
+
+**Testing Instructions**:
+- **For initial testing**: Use `lyra8_single.lua` (all code in one file)
+- **For development**: Use `lyra8.lua` (modular version) once file upload is working
 
 ### Immediate Next Steps
 
