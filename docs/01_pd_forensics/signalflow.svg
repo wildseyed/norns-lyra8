@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .voice-box { fill: #E8F4FD; stroke: #2E86AB; stroke-width: 2; }
+      .effect-box { fill: #F8E8D8; stroke: #D17A22; stroke-width: 2; }
+      .control-box { fill: #E8F8E8; stroke: #22A122; stroke-width: 2; }
+      .global-box { fill: #F8E8F8; stroke: #A122A1; stroke-width: 2; }
+      .audio-path { stroke: #2E86AB; stroke-width: 3; fill: none; }
+      .control-path { stroke: #22A122; stroke-width: 2; fill: none; stroke-dasharray: 5,5; }
+      .feedback-path { stroke: #D17A22; stroke-width: 2; fill: none; stroke-dasharray: 3,3; }
+      .text-label { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      .text-small { font-family: Arial, sans-serif; font-size: 10px; text-anchor: middle; }
+      .text-title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="600" y="25" class="text-title">LIRA-8 Signal Flow Architecture</text>
+  
+  <!-- Voice Section -->
+  <g id="voices">
+    <!-- Voice Oscillators -->
+    <rect x="50" y="50" width="80" height="400" class="voice-box" rx="5"/>
+    <text x="90" y="40" class="text-label">VOICES 1-8</text>
+    
+    <!-- Individual voice blocks -->
+    <rect x="60" y="70" width="60" height="40" class="voice-box"/>
+    <text x="90" y="85" class="text-small">Voice 1</text>
+    <text x="90" y="95" class="text-small">Triangle</text>
+    
+    <rect x="60" y="120" width="60" height="40" class="voice-box"/>
+    <text x="90" y="135" class="text-small">Voice 2</text>
+    <text x="90" y="145" class="text-small">Triangle</text>
+    
+    <rect x="60" y="170" width="60" height="40" class="voice-box"/>
+    <text x="90" y="185" class="text-small">Voice 3</text>
+    <text x="90" y="195" class="text-small">Triangle</text>
+    
+    <rect x="60" y="220" width="60" height="40" class="voice-box"/>
+    <text x="90" y="235" class="text-small">Voice 4</text>
+    <text x="90" y="245" class="text-small">Triangle</text>
+    
+    <rect x="60" y="270" width="60" height="40" class="voice-box"/>
+    <text x="90" y="285" class="text-small">Voice 5</text>
+    <text x="90" y="295" class="text-small">Triangle</text>
+    
+    <rect x="60" y="320" width="60" height="40" class="voice-box"/>
+    <text x="90" y="335" class="text-small">Voice 6</text>
+    <text x="90" y="345" class="text-small">Triangle</text>
+    
+    <rect x="60" y="370" width="60" height="40" class="voice-box"/>
+    <text x="90" y="385" class="text-small">Voice 7</text>
+    <text x="90" y="395" class="text-small">Triangle</text>
+    
+    <rect x="60" y="420" width="60" height="40" class="voice-box"/>
+    <text x="90" y="435" class="text-small">Voice 8</text>
+    <text x="90" y="445" class="text-small">Triangle</text>
+  </g>
+  
+  <!-- Cross-Modulation Matrix -->
+  <g id="crossmod">
+    <rect x="180" y="80" width="120" height="320" class="control-box" rx="5"/>
+    <text x="240" y="70" class="text-label">CROSS-MOD MATRIX</text>
+    
+    <rect x="190" y="100" width="100" height="60" class="control-box"/>
+    <text x="240" y="115" class="text-small">Source 12</text>
+    <text x="240" y="125" class="text-small">34→56</text>
+    <text x="240" y="135" class="text-small">LFO/CV</text>
+    <text x="240" y="145" class="text-small">Total FB</text>
+    
+    <rect x="190" y="170" width="100" height="60" class="control-box"/>
+    <text x="240" y="185" class="text-small">Source 34</text>
+    <text x="240" y="195" class="text-small">12→78</text>
+    <text x="240" y="205" class="text-small">LFO/CV</text>
+    <text x="240" y="215" class="text-small">Total FB</text>
+    
+    <rect x="190" y="240" width="100" height="60" class="control-box"/>
+    <text x="240" y="255" class="text-small">Source 56</text>
+    <text x="240" y="265" class="text-small">78→34</text>
+    <text x="240" y="275" class="text-small">LFO/CV</text>
+    <text x="240" y="285" class="text-small">Total FB</text>
+    
+    <rect x="190" y="310" width="100" height="60" class="control-box"/>
+    <text x="240" y="325" class="text-small">Source 78</text>
+    <text x="240" y="335" class="text-small">56→12</text>
+    <text x="240" y="345" class="text-small">LFO/CV</text>
+    <text x="240" y="355" class="text-small">Total FB</text>
+  </g>
+  
+  <!-- Hyper-LFO -->
+  <g id="hyperlfo">
+    <rect x="50" y="500" width="150" height="120" class="global-box" rx="5"/>
+    <text x="125" y="490" class="text-label">HYPER-LFO</text>
+    
+    <rect x="60" y="520" width="60" height="40" class="global-box"/>
+    <text x="90" y="535" class="text-small">F-A</text>
+    <text x="90" y="545" class="text-small">Phasor</text>
+    
+    <rect x="130" y="520" width="60" height="40" class="global-box"/>
+    <text x="160" y="535" class="text-small">F-B</text>
+    <text x="160" y="545" class="text-small">Phasor</text>
+    
+    <rect x="60" y="570" width="60" height="40" class="global-box"/>
+    <text x="90" y="585" class="text-small">Triangle</text>
+    <text x="90" y="595" class="text-small">Output</text>
+    
+    <rect x="130" y="570" width="60" height="40" class="global-box"/>
+    <text x="160" y="585" class="text-small">Square</text>
+    <text x="160" y="595" class="text-small">AND/OR</text>
+  </g>
+  
+  <!-- Voice Mixer -->
+  <g id="mixer">
+    <rect x="360" y="150" width="80" height="200" class="effect-box" rx="5"/>
+    <text x="400" y="140" class="text-label">VOICE MIX</text>
+    <text x="400" y="260" class="text-small">Sum 8 Voices</text>
+  </g>
+  
+  <!-- Delay System -->
+  <g id="delay">
+    <rect x="500" y="100" width="140" height="280" class="effect-box" rx="5"/>
+    <text x="570" y="90" class="text-label">DUAL DELAY</text>
+    
+    <rect x="510" y="120" width="120" height="80" class="effect-box"/>
+    <text x="570" y="135" class="text-small">Delay 1</text>
+    <text x="570" y="145" class="text-small">Time 1, Mod 1</text>
+    <text x="570" y="155" class="text-small">5944 samples</text>
+    <text x="570" y="165" class="text-small">Compressor</text>
+    <text x="570" y="175" class="text-small">HP/LP Filter</text>
+    
+    <rect x="510" y="210" width="120" height="80" class="effect-box"/>
+    <text x="570" y="225" class="text-small">Delay 2</text>
+    <text x="570" y="235" class="text-small">Time 2, Mod 2</text>
+    <text x="570" y="245" class="text-small">5944 samples</text>
+    <text x="570" y="255" class="text-small">Compressor</text>
+    <text x="570" y="265" class="text-small">HP/LP Filter</text>
+    
+    <rect x="510" y="300" width="120" height="60" class="effect-box"/>
+    <text x="570" y="315" class="text-small">Feedback</text>
+    <text x="570" y="325" class="text-small">Saturation</text>
+    <text x="570" y="335" class="text-small">Mix Control</text>
+  </g>
+  
+  <!-- Distortion -->
+  <g id="distortion">
+    <rect x="700" y="150" width="100" height="150" class="effect-box" rx="5"/>
+    <text x="750" y="140" class="text-label">DISTORTION</text>
+    
+    <rect x="710" y="170" width="80" height="40" class="effect-box"/>
+    <text x="750" y="185" class="text-small">Drive</text>
+    <text x="750" y="195" class="text-small">exp(3^x)</text>
+    
+    <rect x="710" y="220" width="80" height="40" class="effect-box"/>
+    <text x="750" y="235" class="text-small">Tanh~</text>
+    <text x="750" y="245" class="text-small">Saturation</text>
+    
+    <rect x="710" y="270" width="80" height="20" class="effect-box"/>
+    <text x="750" y="282" class="text-small">Mix</text>
+  </g>
+  
+  <!-- Master Output -->
+  <g id="master">
+    <rect x="860" y="180" width="100" height="120" class="effect-box" rx="5"/>
+    <text x="910" y="170" class="text-label">MASTER OUT</text>
+    
+    <rect x="870" y="200" width="80" height="30" class="effect-box"/>
+    <text x="910" y="217" class="text-small">Volume</text>
+    
+    <rect x="870" y="240" width="80" height="30" class="effect-box"/>
+    <text x="910" y="257" class="text-small">DC Block</text>
+    
+    <rect x="870" y="280" width="80" height="15" class="effect-box"/>
+    <text x="910" y="290" class="text-small">Output</text>
+  </g>
+  
+  <!-- Control Parameters -->
+  <g id="controls">
+    <rect x="250" y="500" width="300" height="120" class="control-box" rx="5"/>
+    <text x="400" y="490" class="text-label">CONTROL HIERARCHY</text>
+    
+    <text x="270" y="520" class="text-small">Individual: tune-N, sensor-N</text>
+    <text x="270" y="535" class="text-small">Pairs: sharp-XY, mod-XY, fast-XY, source-XY</text>
+    <text x="270" y="550" class="text-small">Quads: pitch-XYZW, hold-XYZW</text>
+    <text x="270" y="565" class="text-small">Global: f-a/b, time-1/2, feedback, drive, vol</text>
+    <text x="270" y="580" class="text-small">Toggles: total-fb, vibrato, switch, quantize</text>
+  </g>
+  
+  <!-- Audio Signal Paths -->
+  <!-- Voice to Mixer -->
+  <path d="M 130 250 L 360 250" class="audio-path"/>
+  <text x="245" y="245" class="text-small">8 voices</text>
+  
+  <!-- Mixer to Delay -->
+  <path d="M 440 250 L 500 250" class="audio-path"/>
+  
+  <!-- Delay to Distortion -->
+  <path d="M 640 250 L 700 250" class="audio-path"/>
+  
+  <!-- Distortion to Master -->
+  <path d="M 800 250 L 860 250" class="audio-path"/>
+  
+  <!-- Cross-mod feedback paths -->
+  <path d="M 240 400 Q 240 450 90 450 Q 90 400 90 300" class="feedback-path"/>
+  <text x="165" y="435" class="text-small">FM</text>
+  
+  <!-- Delay feedback -->
+  <path d="M 570 300 Q 570 420 500 420 Q 430 420 430 300 Q 430 200 500 200" class="feedback-path"/>
+  <text x="500" y="410" class="text-small">Delay FB</text>
+  
+  <!-- LFO to Delay modulation -->
+  <path d="M 200 580 L 570 580 Q 570 400 570 380" class="control-path"/>
+  <text x="385" y="575" class="text-small">LFO mod</text>
+  
+  <!-- LFO to Cross-mod -->
+  <path d="M 160 500 Q 160 450 240 450 Q 240 400 240 370" class="control-path"/>
+  
+  <!-- Total feedback bus -->
+  <path d="M 910 300 Q 1000 300 1000 480 Q 1000 480 400 480 Q 240 480 240 400" class="feedback-path"/>
+  <text x="620" y="475" class="text-small">Total FB Bus</text>
+  
+  <!-- Sensor controls -->
+  <path d="M 50 480 Q 30 480 30 250 Q 30 250 50 250" class="control-path"/>
+  <text x="20" y="350" class="text-small" transform="rotate(-90 20 350)">Sensors</text>
+  
+  <!-- Legend -->
+  <g id="legend">
+    <rect x="1020" y="50" width="150" height="120" fill="white" stroke="black" stroke-width="1"/>
+    <text x="1095" y="70" class="text-label">Legend</text>
+    
+    <line x1="1030" y1="85" x2="1050" y2="85" class="audio-path"/>
+    <text x="1060" y="90" class="text-small">Audio Signal</text>
+    
+    <line x1="1030" y1="105" x2="1050" y2="105" class="control-path"/>
+    <text x="1060" y="110" class="text-small">Control Signal</text>
+    
+    <line x1="1030" y1="125" x2="1050" y2="125" class="feedback-path"/>
+    <text x="1060" y="130" class="text-small">Feedback Path</text>
+    
+    <rect x="1030" y="140" width="15" height="10" class="voice-box"/>
+    <text x="1055" y="148" class="text-small">Voice/Audio</text>
+    
+    <rect x="1100" y="140" width="15" height="10" class="effect-box"/>
+    <text x="1125" y="148" class="text-small">Effects</text>
+  </g>
+  
+  <!-- Technical specs -->
+  <g id="specs">
+    <rect x="600" y="500" width="200" height="120" class="global-box" rx="5"/>
+    <text x="700" y="490" class="text-label">SPECIFICATIONS</text>
+    
+    <text x="620" y="520" class="text-small">Sample Rate: 44.1kHz</text>
+    <text x="620" y="535" class="text-small">Voices: 8 independent</text>
+    <text x="620" y="550" class="text-small">Delay: 2×135ms max</text>
+    <text x="620" y="565" class="text-small">Parameters: 47 total</text>
+    <text x="620" y="580" class="text-small">MIDI: C1-G1 triggers</text>
+    <text x="620" y="595" class="text-small">Control: 4-level hierarchy</text>
+  </g>
+  
+  <!-- Copyright -->
+  <text x="600" y="770" class="text-small">LIRA-8 by Miguel Moreno - Analysis for Norns Implementation</text>
+  <text x="600" y="790" class="text-small">Signal flow based on Pure Data standalone v2020</text>
+</svg>
