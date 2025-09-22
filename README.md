@@ -194,9 +194,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 ```
 norns-lyra8/
 ├── lyra8.lua                    # Main script
-├── engine/
-│   └── Engine_Lyra8.sc         # SuperCollider engine
-├── lib/lyra8/
+├── lib/
+│   ├── Engine_Lyra8.sc         # SuperCollider engine
 │   ├── parameters.lua          # Parameter system
 │   ├── engine_interface.lua    # Engine communication
 │   └── ui.lua                  # User interface
@@ -242,7 +241,11 @@ This project is in **active development**. Current status:
 
 **First Run (2024-09-21)**:
 - ❌ **Module Loading**: Fixed require path issue (`lyra8/ui` → `lib/lyra8/ui`)
-- ⏳ **Next**: Test if modules load correctly with fixed paths
+- ❌ **File Structure**: Fixed subdirectory issue - moved to flat `lib/` structure
+
+**Second Run (2024-09-21)**:
+- ⏳ **Module Loading**: Testing simplified `lib/module` paths
+- ⏳ **Next**: Verify modules load with flat structure
 
 ### Immediate Next Steps
 

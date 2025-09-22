@@ -31,9 +31,9 @@ local function safe_require(module_name)
 end
 
 print("LYRA-8: Loading modules...")
-UI = safe_require("lib/lyra8/ui")
-Engine = safe_require("lib/lyra8/engine_interface") 
-Params = safe_require("lib/lyra8/parameters")
+UI = safe_require("lib/ui")
+Engine = safe_require("lib/engine_interface") 
+Params = safe_require("lib/parameters")
 
 -- Check if all modules loaded successfully
 if not UI or not Engine or not Params then
