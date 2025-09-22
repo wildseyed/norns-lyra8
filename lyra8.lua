@@ -15,9 +15,30 @@
 --
 -- v1.0-dev @norns-lyra8
 
-local UI = require("lyra8/ui")
-local Engine = require("lyra8/engine_interface")
-local Params = require("lyra8/parameters")
+-- Module loading with error handling
+local UI, Engine, Params
+
+local function safe_require(module_name)
+    local success, module = pcall(require, module_name)
+    if success then
+        print("✓ Loaded: " .. module_name)
+        return module
+    else
+        print("✗ Failed to load: " .. module_name)
+        print("Error: " .. tostring(module))
+        return nil
+    end
+end
+
+print("LYRA-8: Loading modules...")
+UI = safe_require("lib/lyra8/ui")
+Engine = safe_require("lib/lyra8/engine_interface") 
+Params = safe_require("lib/lyra8/parameters")
+
+-- Check if all modules loaded successfully
+if not UI or not Engine or not Params then
+    error("LYRA-8: Failed to load required modules. Check file structure.")
+end
 
 engine.name = "Lyra8"
 
@@ -46,21 +67,27 @@ local app = {
 
 -- Initialize
 function init()
-    print("LYRA-8 v1.0 initializing...")
+    print("LYRA-8 v1.0-dev initializing...")
+    print("Loading modules...")
     
     -- Load parameter system
+    print("Loading parameter system...")
     Params.init()
     
     -- Initialize engine interface
+    print("Loading engine interface...")
     Engine.init()
     
     -- Initialize UI
+    print("Loading UI...")
     UI.init()
     
     -- Set up parameter callbacks
+    print("Setting up parameter callbacks...")
     setup_param_callbacks()
     
     -- Start UI refresh timer
+    print("Starting UI refresh timer...")
     app.refresh_timer = metro.init()
     app.refresh_timer.time = 1/30  -- 30fps
     app.refresh_timer.count = -1
