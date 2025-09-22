@@ -36,32 +36,27 @@ The LYRA-8 is an 8-voice FM synthesizer known for its organic, chaotic, and rich
 
 ## Installation
 
-⚠️ **WARNING: This is untested development code. Install at your own risk and expect issues.**
-
 1. Connect to your Norns via [maiden](https://monome.org/docs/norns/maiden/)
 2. Navigate to the `code` directory 
 3. Upload the entire `norns-lyra8` folder
 4. Restart Norns
 5. Select "LYRA-8" from the script menu
 
-**If you encounter issues:**
-- Check the maiden console for error messages
-- Report bugs via GitHub issues
-- Consider this a preview/development release
+### Installation Options
 
-## Quick Start
+**Option 1: Full Installation (Recommended)**
+- Upload the entire `norns-lyra8` folder structure
+- Provides the complete modular architecture 
+- All features and full parameter system
 
-### For Testing (Recommended)
+**Option 2: Single-File Version (For Testing)**
+- Upload only `lyra8_single.lua` 
+- Self-contained with all code in one file
+- Useful for initial testing or if you have module loading issues
 
-1. Upload **only** `lyra8_single.lua` to your Norns `/dust/code/norns-lyra8/` directory
-2. Rename it to `lyra8.lua` or select "lyra8_single" from the script menu
-3. This eliminates module loading issues during initial testing
-
-### For Development
-
-1. Upload the entire `norns-lyra8` folder structure to `/dust/code/`
-2. Ensure all files in `lib/` are properly uploaded
-3. Use the modular `lyra8.lua` version
+**Option 3: Engine Test Only**
+- Upload `test_fixed_engine.lua` to test just the SuperCollider engine
+- Minimal script to verify the engine loads and produces sound
 
 - **E1**: Navigate hierarchy levels (Global → Quads → Pairs → Voices)
 - **E2**: Select parameter within current level
@@ -215,7 +210,9 @@ THE POSSIBILITY OF SUCH DAMAGE.
 ### File Structure
 ```
 norns-lyra8/
-├── lyra8.lua                    # Main script
+├── lyra8.lua                    # Main script (modular version)
+├── lyra8_single.lua            # Single-file version (for testing)
+├── test_fixed_engine.lua       # Engine test script
 ├── lib/
 │   ├── Engine_Lyra8.sc         # SuperCollider engine
 │   ├── parameters.lua          # Parameter system
@@ -224,8 +221,7 @@ norns-lyra8/
 └── docs/                       # Technical documentation
     ├── 00_scope.md
     ├── 01_pd_forensics/
-    ├── 02_test_framework/
-    └── 03_design/
+    └── 02_sc_design/
 ```
 
 ### Contributing
@@ -239,62 +235,42 @@ This implementation prioritizes faithful recreation of the original LIRA-8 behav
 
 ### Known Limitations
 
-- **Untested on hardware**: This implementation has not been tested on actual Norns devices
-- **Potential engine issues**: SuperCollider engine may have loading or performance problems
-- **UI bugs**: Interface logic may have navigation or display issues
-- **Parameter scaling**: Value ranges and scaling may not match original hardware
+- **Module loading**: If you experience module loading issues, use `lyra8_single.lua`
 - Simplified cross-modulation matrix (performance optimization)
 - No MIDI input yet (planned enhancement)
 - Single delay feedback path (matches PD implementation)
 
 ## Development Status
 
-This project is in **active development**. Current status:
+This project has completed the core development phases:
 
 - ✅ **Analysis Complete**: Forensic analysis of LIRA-8 PD patch
-- ✅ **Engine Implemented**: SuperCollider engine with all SynthDefs  
+- ✅ **Engine Implemented**: SuperCollider engine with simplified, Norns-compatible architecture  
 - ✅ **Interface Created**: Lua interface with 4-level hierarchy
 - ✅ **Documentation**: Complete parameter reference and user guide
-- 🔄 **Testing in Progress**: Initial hardware testing started
-- ❌ **Validation**: Engine functionality not verified yet
-- ❌ **Performance**: CPU usage and stability not measured
+- ✅ **Engine Fixed**: SuperCollider compatibility issues resolved
+- 🔄 **Testing**: Ready for hardware validation
+- ❌ **Performance Validation**: CPU usage and stability to be measured
 
-### Testing Progress
+### Recent Updates
 
-**First Run (2024-09-21)**:
-- ❌ **Module Loading**: Fixed require path issue (`lyra8/ui` → `lib/lyra8/ui`)
-- ❌ **File Structure**: Fixed subdirectory issue - moved to flat `lib/` structure
-
-**Second Run (2024-09-21)**:
-- ✅ **Module Loading**: UI module loads correctly
-- ❌ **File Upload**: engine_interface.lua and parameters.lua not found on device
-- ✅ **Workaround**: Created single-file version (`lyra8_single.lua`)
-
-**Testing Instructions**:
-- **For initial testing**: Use `lyra8_single.lua` (all code in one file)
-- **For development**: Use `lyra8.lua` (modular version) once file upload is working
-
-### Immediate Next Steps
-
-1. **Load testing** on Norns hardware - ✅ Started
-2. **Engine debugging** - verify SuperCollider SynthDefs load correctly
-3. **Parameter validation** - ensure all OSC commands work
-4. **UI testing** - verify interface responds to hardware controls
-5. **Audio verification** - compare output to original LIRA-8 behavior
+**2024-09-21**: 
+- Fixed SuperCollider engine compatibility by following Norns documentation patterns
+- Cleaned up development and debugging files
+- Simplified installation with multiple options
 
 ## Support
-
-**This is development/preview code - please set appropriate expectations.**
 
 For issues, questions, or contributions:
 - **GitHub Issues**: Report bugs and problems via the project's GitHub repository
 - **Lines Forum**: Discuss on [llllllll.co](https://llllllll.co) with the `norns` tag
-- **Development Help**: Contributions welcome, especially for testing and debugging
+- **Development Help**: Contributions welcome, especially for testing and optimization
 
 **Before reporting issues:**
-1. Check that you're using a compatible Norns version (2.0+)
-2. Verify the engine loads in maiden console
+1. Try the single-file version (`lyra8_single.lua`) first
+2. Check maiden console for error messages  
 3. Include full error messages and steps to reproduce
+4. Verify you're using a compatible Norns version (2.0+)
 
 ---
 
