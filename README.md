@@ -1,5 +1,7 @@
 # LYRA-8 for Norns
 
+⚠️ **DEVELOPMENT STATUS: This project is currently in active development and has not been tested on actual Norns hardware yet. Expect bugs, incomplete features, and potential breaking changes.**
+
 A faithful recreation of the Soma Labs Lyra-8 synthesizer for [Norns](https://monome.org/docs/norns/), based on the MikeMorenoDSP LIRA-8 Pure Data implementation.
 
 ## Overview
@@ -22,11 +24,18 @@ The LYRA-8 is an 8-voice FM synthesizer known for its organic, chaotic, and rich
 
 ## Installation
 
+⚠️ **WARNING: This is untested development code. Install at your own risk and expect issues.**
+
 1. Connect to your Norns via [maiden](https://monome.org/docs/norns/maiden/)
 2. Navigate to the `code` directory 
 3. Upload the entire `norns-lyra8` folder
 4. Restart Norns
 5. Select "LYRA-8" from the script menu
+
+**If you encounter issues:**
+- Check the maiden console for error messages
+- Report bugs via GitHub issues
+- Consider this a preview/development release
 
 ## Quick Start
 
@@ -209,14 +218,50 @@ This implementation prioritizes faithful recreation of the original LIRA-8 behav
 
 ### Known Limitations
 
+- **Untested on hardware**: This implementation has not been tested on actual Norns devices
+- **Potential engine issues**: SuperCollider engine may have loading or performance problems
+- **UI bugs**: Interface logic may have navigation or display issues
+- **Parameter scaling**: Value ranges and scaling may not match original hardware
 - Simplified cross-modulation matrix (performance optimization)
 - No MIDI input yet (planned enhancement)
 - Single delay feedback path (matches PD implementation)
 
+## Development Status
+
+This project is in **active development**. Current status:
+
+- ✅ **Analysis Complete**: Forensic analysis of LIRA-8 PD patch
+- ✅ **Engine Implemented**: SuperCollider engine with all SynthDefs  
+- ✅ **Interface Created**: Lua interface with 4-level hierarchy
+- ✅ **Documentation**: Complete parameter reference and user guide
+- ❌ **Testing**: No hardware testing completed yet
+- ❌ **Validation**: Engine functionality not verified
+- ❌ **Performance**: CPU usage and stability not measured
+
+### Immediate Next Steps
+
+1. **Load testing** on Norns hardware
+2. **Engine debugging** - verify SuperCollider SynthDefs load correctly
+3. **Parameter validation** - ensure all OSC commands work
+4. **UI testing** - verify interface responds to hardware controls
+5. **Audio verification** - compare output to original LIRA-8 behavior
+
 ## Support
 
-For issues, questions, or contributions, please use the project's GitHub repository or post on the [lines community forum](https://llllllll.co) with the `norns` tag.
+**This is development/preview code - please set appropriate expectations.**
+
+For issues, questions, or contributions:
+- **GitHub Issues**: Report bugs and problems via the project's GitHub repository
+- **Lines Forum**: Discuss on [llllllll.co](https://llllllll.co) with the `norns` tag
+- **Development Help**: Contributions welcome, especially for testing and debugging
+
+**Before reporting issues:**
+1. Check that you're using a compatible Norns version (2.0+)
+2. Verify the engine loads in maiden console
+3. Include full error messages and steps to reproduce
 
 ---
 
 *"The LYRA-8 creates a journey through a universe of unique sounds"* - Soma Laboratories
+
+**Status: Development Preview - Use with caution and expect bugs!**

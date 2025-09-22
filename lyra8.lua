@@ -2,6 +2,10 @@
 -- A recreation of the Soma Labs Lyra-8 synthesizer
 -- Based on MikeMorenoDSP LIRA-8 Pure Data implementation
 -- 
+-- ⚠️  DEVELOPMENT VERSION - UNTESTED ON HARDWARE
+-- ⚠️  Expect bugs, crashes, and incomplete features
+-- ⚠️  Use at your own risk
+--
 -- E1: Navigate hierarchy levels
 -- E2: Select parameter 
 -- E3: Adjust parameter value
@@ -9,7 +13,7 @@
 -- K2: Enter/exit edit mode
 -- K3: Reset parameter to default
 --
--- v1.0 @norns-lyra8
+-- v1.0-dev @norns-lyra8
 
 local UI = require("lyra8/ui")
 local Engine = require("lyra8/engine_interface")
