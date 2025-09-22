@@ -2,6 +2,18 @@
 
 ⚠️ **DEVELOPMENT STATUS: This project is currently in active development and has not been tested on actual Norns hardware yet. Expect bugs, incomplete features, and potential breaking changes.**
 
+## Latest Update (2024-09-21)
+
+**SuperCollider Engine Status: FIXED ✅**
+
+The engine has been rebuilt following proper Norns documentation patterns:
+- Fixed complex bus architecture that wasn't compatible with Norns
+- Simplified to use proper `context.xg` and `context.out_b` patterns
+- Removed incompatible features and used working Norns engine examples as reference
+- Engine should now load without "ERROR: Supercollider Fail" messages
+
+**Test the fix**: Upload `test_fixed_engine.lua` to test the corrected engine.
+
 A faithful recreation of the Soma Labs Lyra-8 synthesizer for [Norns](https://monome.org/docs/norns/), based on the MikeMorenoDSP LIRA-8 Pure Data implementation.
 
 ## Overview
